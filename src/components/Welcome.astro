@@ -1,0 +1,75 @@
+---
+import '@fontsource/anton';
+import '@fontsource/mea-culpa';
+import Bento from './bento.astro';
+---
+
+<style>
+
+	h1 {
+		margin: 0;
+		padding: 0;
+		line-height: 1;
+	}
+
+	.container {
+		margin: 10px;
+	}
+
+	.title {
+		position: fixed;
+	}
+
+	.main-title {
+		
+		font-size: 250px;
+		line-height: 1;
+		letter-spacing: -8px;
+	}
+
+	.sub-title {
+		margin: 0;
+		padding: 0;
+		font-size: 150px;
+		line-height: 0;
+		font-weight: bold;
+	}
+
+	.works {
+		top: 85%;
+		width: 100vw;
+		position: absolute;
+		z-index: 3;
+		
+		background-color: white;
+		.info {
+			margin: 0 20px 0 20px;
+		}
+
+		.info h1{
+			margin-bottom: 10px;
+		}
+
+	}
+
+
+	
+</style>
+
+
+<div class="container">
+	<div class="title">
+		<h1 class="main-title" style="font-family: 'Anton';">PABLO CONEJOS</h1>
+		<p class="sub-title" style="font-family: 'Mea Culpa'; color: red">Developer</>
+	</div>
+	
+
+
+	
+</div>
+
+<div class="works">
+	<h1 style="font-family: 'Anton'; margin: 10px">WORKS</h1>
+	<Bento />
+</div>
+
