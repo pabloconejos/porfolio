@@ -1,7 +1,8 @@
 ---
 import '@fontsource/anton';
 import '@fontsource/mea-culpa';
-import Bento from './bento.astro';
+import Bento from './Bento.astro';
+import AboutMe from './AboutMe.astro';
 ---
 
 <style>
@@ -35,7 +36,7 @@ import Bento from './bento.astro';
 		font-weight: bold;
 	}
 
-	.works {
+	.page {
 		top: 85%;
 		width: 100vw;
 		position: absolute;
@@ -53,6 +54,10 @@ import Bento from './bento.astro';
 	}
 
 
+
+
+
+
 	
 </style>
 
@@ -68,8 +73,10 @@ import Bento from './bento.astro';
 	
 </div>
 
-<div class="works">
-	<h1 style="font-family: 'Anton'; margin: 10px">WORKS</h1>
+
+
+<div class="page">
 	<Bento />
+	<AboutMe />
 </div>
 
