@@ -2,31 +2,74 @@
 ---
 
 <style>
-    .about {
+    .focus {
         display: flex;
         gap: 32px;
         justify-content: space-between;
         align-items: start;
-        margin: 90px 20px 10px 10px;
+        margin: 15px;
     }
 
     h1 {
         width: 350px;
-    }
-
-    ul {
-        font-size: 50px;
-        flex: 1;
+        font-size: clamp(24px, 5vw, 50px); /* Se adapta dinámicamente */
         margin: 0;
         padding: 0;
     }
 
     ul {
+        font-size: clamp(16px, 4vw, 50px); /* Ajuste dinámico del texto */
+        flex: 1;
+        margin: 0;
+        padding: 0;
         list-style: none;
+        line-height: 1;
+    }
+
+    /* Tablets */
+    @media (max-width: 1024px) {
+        .focus {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        ul {
+            font-size: 32px;
+            margin: 0;
+            padding: 0;
+            flex: 1;
+        }
+    }
+
+    /* Móviles (hasta 768px) */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 32px;
+        }
+
+        ul {
+            font-size: 24px;
+        }
+    }
+
+    /* Móviles pequeños (hasta 480px) */
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 28px;
+        }
+
+        ul {
+            font-size: 18px;
+        }
     }
 </style>
 
-<div class="about">
+
+<div id="focus" class="focus">
     <h1 style="font-family: 'Anton';">Focus</h1>
     <ul style="font-family: 'Anton';">
         <li>Web Development</li>

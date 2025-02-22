@@ -5,6 +5,8 @@ import Bento from './Bento.astro';
 import AboutMe from './AboutMe.astro';
 import Focus from './Focus.astro';
 import Experience from './Experience.astro';
+import Contact from './Contact.astro';
+import Footer from './Footer.astro';
 ---
 
 <style>
@@ -15,16 +17,12 @@ import Experience from './Experience.astro';
 		line-height: 1;
 	}
 
-	.container {
-		margin: 10px;
-	}
-
 	.title {
 		position: fixed;
+		margin: 20px;
 	}
 
 	.main-title {
-		
 		font-size: 250px;
 		line-height: 1;
 		letter-spacing: -8px;
@@ -40,11 +38,15 @@ import Experience from './Experience.astro';
 
 	.page {
 		top: 85%;
-		width: 100vw;
+		width: 100wv;
 		position: absolute;
 		z-index: 3;
-		
 		background-color: white;
+
+		display: flex;
+		flex-direction: column;
+		gap: 90px;
+
 		.info {
 			margin: 0 20px 0 20px;
 		}
@@ -57,30 +59,71 @@ import Experience from './Experience.astro';
 
 
 
+    @media (max-width: 830px) {
 
+		.page {
+			width: 100%;
+		}
+
+		.main-title {
+			font-size: 200px;
+		}
+
+		.sub-title {
+			font-size: 100px;
+		}
+	}
+
+    /* Móviles (hasta 768px) */
+    @media (max-width: 650px) {
+
+		.page {
+			width: 100%;
+			gap: 40px;
+		}
+		
+		.main-title {
+			font-size: 150px;
+		}
+
+		.sub-title {
+			font-size: 100px;
+		}
+
+
+    }
+
+    /* Móviles pequeños (hasta 480px) */
+    @media (max-width: 470px) {
+		.main-title {
+			font-size: 120px;
+		}
+
+		.sub-title {
+			font-size: 80px;
+		}
+    }
 
 
 	
 </style>
 
+<main>
 
-<div class="container">
 	<div class="title">
 		<h1 class="main-title" style="font-family: 'Anton';">PABLO CONEJOS</h1>
 		<p class="sub-title" style="font-family: 'Mea Culpa'; color: red">Developer</>
 	</div>
 	
-
-
+	<div class="page">
+		<Bento />
+		 <AboutMe />
+		<Focus />
+		<Experience />
+		<Contact />
+		<Footer />
+	</div>
 	
-</div>
+</main>
 
-
-
-<div class="page">
-	<Bento />
-	<AboutMe />
-	<Focus />
-	<Experience />
-</div>
 

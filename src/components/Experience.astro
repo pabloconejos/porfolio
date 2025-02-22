@@ -7,43 +7,99 @@
         gap: 32px;
         justify-content: space-between;
         align-items: start;
-        margin: 90px 20px 10px 10px;
+        margin: 15px;
     }
 
     h1 {
         width: 350px;
+        font-size: clamp(24px, 5vw, 50px); /* Tamaño de texto adaptable */
+        margin: 0;
+        padding: 0;
     }
 
     table {
         flex: 1;
         margin: 0;
         padding: 0;
-    }
-
-    table {
-        font-size: 30px;
-        width: 70%;
+        font-size: clamp(14px, 2vw, 30px); /* Ajuste dinámico del texto */
+        width: 100%;
         border-collapse: collapse;
     }
+
     th, td {
         padding: 12px;
         text-align: left;
+        line-height: 1;
     }
+
     th {
         font-weight: bold;
     }
+
     tr:not(:last-child) {
         border-bottom: 1px solid #444;
     }
+
     .job-title {
         font-weight: bold;
     }
 
-    
+    /* Tablets */
+    @media (max-width: 1024px) {
+        .about {
+            flex-direction: column;
+            gap: 16px;
+        }
 
+        h1 {
+            font-size: 40px;
+        }
+
+        table {
+            font-size: 24px;
+        }
+
+        td {
+            padding: 5px;
+        }
+    }
+
+    /* Móviles (hasta 768px) */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 32px;
+        }
+
+        table {
+            font-size: 20px;
+        }
+
+        th, td {
+            display: block;
+            width: 100%;
+        }
+
+        tr {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 2px solid #444;
+        }
+    }
+
+    /* Móviles pequeños (hasta 480px) */
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 28px;
+        }
+
+        table {
+            font-size: 18px;
+        }
+    }
 </style>
 
-<div class="about">
+
+<div id="experience" class="about">
     <h1 style="font-family: 'Anton';">Experience</h1>
     <table style="font-family: 'Anton';">
         <tr>

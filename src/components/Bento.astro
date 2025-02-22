@@ -1,37 +1,32 @@
-<h1 style="font-family: 'Anton'; margin: 10px">WORKS</h1>
-<div class="container">
+<div id="works" class="container">
+    <h1 style="font-family: 'Anton';">WORKS</h1>
     <div class="grid">
-      <a class="item row-2 column-3 glightbox" href="https://biati-digital.github.io/glightbox/demo/img/small/gm10.jpg">
-        <img src="https://raw.githubusercontent.com/pabloconejos/tic_tac_toe/main/public/assets/tictactoeimg.png" alt="test"/>
+      <a target="_blank" class="item row-2 column-3 glightbox" href="https://tictactoe-theta-ten.vercel.app">
+        <img src="works/tictactoe.png" alt="Tic Tac Toe Online"/>
       </a>
-      <a class="item column-2 glightbox" href="https://biati-digital.github.io/glightbox/demo/img/large/gm8.jpg">
-        <img src="https://raw.githubusercontent.com/pabloconejos/2024best/main/public/assets/main_photo.png" alt="test"/>
+      <a target="_blank" class="item column-2 glightbox" href="https://2024best.vercel.app">
+        <img src="works/2024best.png" alt="2024 music form"/>
       </a>
-      <a class="item column-3 glightbox" href="https://biati-digital.github.io/glightbox/demo/img/large/gm2.jpg">
-        <img src="https://pablo-conejos-porfolio-dev.web.app/assets/475shots_so.jpg" alt="test"/>
+      <a target="_blank" class="item column-3 glightbox" href="https://musicnumbers-f4704.web.app/">
+        <img src="works/musicnumbers.jpg" alt="Spotify Stats"/>
       </a>
-      <a class="item column-3 glightbox" href="https://biati-digital.github.io/glightbox/demo/img/large/gm3.jpg">
-        <img src="https://pablo-conejos-porfolio-dev.web.app/assets/mylinksweb.png" alt="test"/>
+      <a target="_blank" class="item column-3 glightbox" href="https://mylinks-sigma.vercel.app/">
+        <img src="works/mylinks.png" alt="Links Social Media"/>
       </a>
-      <a class="item column-2 glightbox" href="https://biati-digital.github.io/glightbox/demo/img/large/gm6.jpg">
-        <img src="https://raw.githubusercontent.com/pabloconejos/gallery_opium_sesion/master/public/images/img_template.png" alt="test"/>
+      <a target="_blank" class="item column-2 glightbox" href="https://opium-session.web.app/">
+        <img src="works/gallerymagazine.png" alt="Online Magazine"/>
       </a>
-      <a class="item column-3 glightbox" href="https://www.pabloconejos.dev/assets/photo-collage.png.png">
-        <img src="https://www.pabloconejos.dev/assets/photo-collage.png.png" alt="test"/>
+      <a target="_blank" class="item column-3 glightbox" href="https://escribadesigns-d7b17.web.app/galeria">
+        <img src="works/escriba.png" alt="Graphic Designer PortFolio"/>
       </a>
     </div>
 </div>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
     .container {
-       margin: 10px;
+       margin: 15px;
     }
+    
     .grid {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
@@ -69,7 +64,9 @@
 
     @media (max-width: 480px) {
         .grid {
-            grid-template-columns: repeat(1, 1fr);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
     }
 

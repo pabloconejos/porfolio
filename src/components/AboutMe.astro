@@ -7,22 +7,65 @@
         gap: 32px;
         justify-content: space-between;
         align-items: start;
-        margin: 90px 20px 10px 10px;
+        margin: 15px;
     }
 
     h1 {
         width: 350px;
-    }
-
-    p {
-        font-size: 50px;
-        flex: 1;
+        font-size: clamp(24px, 5vw, 50px); /* Se ajusta dinámicamente entre 24px y 50px */
         margin: 0;
         padding: 0;
     }
+
+    p {
+        font-size: clamp(16px, 4vw, 50px); /* Ajuste dinámico de tamaño */
+        flex: 1;
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+    }
+
+    /* Tablets */
+    @media (max-width: 1024px) {
+        .about {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        p {
+            font-size: 32px;
+        }
+    }
+
+    /* Móviles (pantallas de hasta 768px) */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 24px;
+        }
+    }
+
+    /* Móviles pequeños (hasta 480px) */
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    }
 </style>
 
-<div class="about">
+
+<div id="about" class="about">
     <h1 style="font-family: 'Anton';"> About Me</h1>
     <p style="font-family: 'Anton';">
         Web developer with experience in building web and mobile applications, specializing in Angular and modern frameworks.
