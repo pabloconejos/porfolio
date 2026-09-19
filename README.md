@@ -1,22 +1,46 @@
-# Porfolio de Pablo Conejos
+# Astro Starter Kit: Basics
 
-¡Bienvenido a mi porfolio! Soy Pablo Conejos, un desarrollador web con experiencia en diversas tecnologías como Angular, NestJS, .NET, SQL, y más. Este porfolio muestra algunos de los proyectos en los que he trabajado, mis habilidades y conocimientos, así como mi enfoque para desarrollar soluciones efectivas y eficientes.
+```sh
+npm create astro@latest -- --template basics
+```
 
-## Tecnologías
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-Este porfolio está construido con las siguientes tecnologías:
+## 🚀 Project Structure
 
-- **Frontend**: Angular, React, HTML, CSS, JavaScript
-- **Backend**: NestJS, .NET
-- **Bases de Datos**: SQL, MongoDB
-- **Otros**: Git, AWS, Ionic, Next.js
+Inside of your Astro project, you'll see the following folders and files:
 
-## Cómo ver el porfolio
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
+```
 
-Para ver mi porfolio en línea, simplemente visita: [pabloconejos.dev]
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-## Contacto
+## 🧞 Commands
 
-- **LinkedIn**: [https://www.linkedin.com/in/pablo-conejos-chirivella-145024252/]
-- **Correo electrónico**: [pconejos03@gmail.com]
+All commands are run from the root of the project, from a terminal:
 
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

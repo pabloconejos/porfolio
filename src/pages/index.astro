@@ -1,16 +1,100 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-title: "Pablo Conejos - Portfolio"
-description: "Portfolio de Pablo Conejos, programador web especializado en Angular, NestJS, SQL y más."
-author: "Pablo Conejos"
-url: "https://pabloconejos.dev"
-image: "/assets/portfolio-image.png"
-language: "es"
-robots: "index, follow"
+import Layout from "../layouts/Layout.astro";
+import PortadaName from "../components/portada/portada-name.jsx";
+import SideWorksPage from "../components/side-works/side-works-page.astro";
+import AboutMe from "../components/about-me/about-me.astro";
+import HorizontalSection from "../components/about-me/horizontal-section.astro";
+import Memoji from "../components/memoji.astro";
+import OriginalAboutMe from "../components/AboutMe.astro";
+import Bento from "../components/Bento.astro";
+import Contact from "../components/Contact.astro";
+import Experience from "../components/Experience.astro";
+import Footer from "../components/Footer.astro";
+import Focus from "../components/Focus.astro";
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<div class="portada">
+		<PortadaName client:only="react" />
+	</div>
+	<AboutMe />
+	<section class="portfolio-details">
+		<div class="scroll-reveal"><Experience /></div>
+		<div class="scroll-reveal"><OriginalAboutMe /></div>
+		<div class="scroll-reveal"><Bento /></div>
+		<div class="scroll-reveal"><Focus /></div>
+		<div class="scroll-reveal"><Contact /></div>
+		<div class="scroll-reveal"><Footer /></div>
+	</section>
+	<Memoji />
+	<!--  -->
+	<!-- <HorizontalSection client:load /> -->
+	<!-- <SideWorksPage /> -->
 </Layout>
+
+<script>
+	const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+	if (!reducedMotion.matches) {
+		document.documentElement.classList.add("scroll-effects");
+
+		const reveals = document.querySelectorAll(".scroll-reveal");
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) return;
+
+					entry.target.classList.add("is-visible");
+					observer.unobserve(entry.target);
+				});
+			},
+			{ threshold: 0.14 },
+		);
+
+		reveals.forEach((reveal) => observer.observe(reveal));
+	}
+</script>
+
+<style>
+	.portada {
+		min-height: 100svh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		box-sizing: border-box;
+		padding: 2rem clamp(1rem, 5vw, 4rem);
+	}
+
+	.portfolio-details {
+		display: flex;
+		flex-direction: column;
+		gap: 90px;
+		padding-block: 90px;
+	}
+
+	:global(html.scroll-effects) .scroll-reveal {
+		opacity: 0;
+		transform: translateY(2rem);
+		transition: opacity 520ms ease, transform 520ms ease;
+		will-change: opacity, transform;
+	}
+
+	:global(html.scroll-effects) .scroll-reveal.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	@media (max-width: 768px) {
+		.portada {
+			min-height: 100dvh;
+			padding-block: 3rem 2rem;
+		}
+
+		.portfolio-details {
+			gap: 20px;
+			padding-block: 20px;
+		}
+	}
+</style>

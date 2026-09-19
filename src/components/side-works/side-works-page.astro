@@ -1,0 +1,108 @@
+---
+import SideWorksFolder from "./side-works-folder.astro";
+
+
+
+const side_projects = [
+    {
+        title: "Tic Tac Toe Online",
+        fileCount: 12,
+        images: [
+            "https://raw.githubusercontent.com/pabloconejos/tic_tac_toe/refs/heads/main/public/assets/tictactoeimg.png",
+            "https://raw.githubusercontent.com/pabloconejos/tic_tac_toe/refs/heads/main/public/assets/tictactoeimg.png",
+            "https://raw.githubusercontent.com/pabloconejos/tic_tac_toe/refs/heads/main/public/assets/tictactoeimg.png",
+        ],
+        link: "https://github.com/pabloconejos/tic_tac_toe",
+    },
+    {
+        title: "Porfolio Diseñador",
+        fileCount: 12,
+        images: [
+            "https://raw.githubusercontent.com/pabloconejos/escribaDesigns2/refs/heads/master/src/assets/otros/1716820618445.jpeg",
+            "https://raw.githubusercontent.com/pabloconejos/escribaDesigns2/refs/heads/master/src/assets/otros/1716820618445.jpeg",
+            "https://raw.githubusercontent.com/pabloconejos/escribaDesigns2/refs/heads/master/src/assets/otros/1716820618445.jpeg",
+        ],
+        link: "https://github.com/pabloconejos/escribaDesigns2",
+    },
+    {
+        title: "Best Music 2024",
+        fileCount: 12,
+        images: [
+            "https://raw.githubusercontent.com/pabloconejos/2024best/refs/heads/main/public/assets/main_photo.png",
+            "https://raw.githubusercontent.com/pabloconejos/2024best/refs/heads/main/public/assets/main_photo.png",
+            "https://raw.githubusercontent.com/pabloconejos/2024best/refs/heads/main/public/assets/main_photo.png",
+        ],
+        link: "https://github.com/pabloconejos/2024best",
+    },
+    {
+        title: "Music Numbers",
+        fileCount: 12,
+        images: [
+            "https://raw.githubusercontent.com/pabloconejos/musicNumbers/refs/heads/main/templatemns.png",
+            "https://raw.githubusercontent.com/pabloconejos/musicNumbers/refs/heads/main/templatemns.png",
+            "https://raw.githubusercontent.com/pabloconejos/musicNumbers/refs/heads/main/templatemns.png",
+        ],
+        link: "https://github.com/pabloconejos/musicNumbers",
+    },
+    {
+        title: "MyLinks",
+        fileCount: 12,
+        images: [
+            "https://raw.githubusercontent.com/pabloconejos/mylinks/refs/heads/main/src/assets/gitImage/gitImage.png",
+            "https://raw.githubusercontent.com/pabloconejos/mylinks/refs/heads/main/src/assets/gitImage/gitImage.png",
+            "https://raw.githubusercontent.com/pabloconejos/mylinks/refs/heads/main/src/assets/gitImage/gitImage.png"
+        ],
+        link: "https://github.com/pabloconejos/mylinks",
+    }
+]
+---
+
+<style>
+
+.folders {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    justify-items: center;
+}
+
+
+h2 {
+    letter-spacing: -12px;
+    font-weight: bold;
+    font-size: 6em;
+    margin: 0px 20px;
+}
+
+
+@media (max-width: 768px) {
+    h2 {
+        margin: 0 20px;
+        letter-spacing: -4px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 2.2rem;
+        letter-spacing: -2px;
+    }
+}
+
+
+
+</style>
+
+<section>
+    <h2>SIDE W⚙️RKS</h2>
+    <div class="folders">
+        {side_projects.map((project) => (
+            <SideWorksFolder
+                title={project.title}
+                fileCount={project.fileCount}
+                images={project.images}
+                link={project.link}
+            />
+        ))}
+    </div>
+</section>

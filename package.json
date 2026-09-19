@@ -1,5 +1,5 @@
 {
-  "name": "porfolio-dev-pablo",
+  "name": "pablodev-portfolio",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,10 +9,25 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
     "@fontsource/anton": "^5.1.1",
-    "@fontsource/mea-culpa": "^5.1.1",
-    "@tailwindcss/vite": "^4.1.13",
-    "astro": "^5.3.0",
-    "tailwindcss": "^4.1.13"
+    "@gsap/react": "^2.1.2",
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.4.0",
+    "@react-three/postprocessing": "^3.0.4",
+    "@studio-freight/lenis": "^1.0.42",
+    "@tailwindcss/vite": "^4.1.16",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "astro": "^5.15.1",
+    "gsap": "^3.14.2",
+    "leva": "^0.10.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.16",
+    "three": "^0.181.0"
+  },
+  "devDependencies": {
+    "@types/locomotive-scroll": "^4.1.4"
   }
 }

@@ -1,13 +1,15 @@
 ---
+const date = new Date();
+const year = date.getFullYear();
 ---
 
 
 
 
-<footer style="font-family: 'Anton';" class="footer">
+<footer class="footer">
     <div class="footer-container">
         <div class="footer-content">
-            <a href="https://flowbite.com/" class="footer-logo">
+            <a class="footer-logo">
                 <img src="logo_pablo_sin_fondo.png" class="logo-img" alt="Pablo Logo" />
             </a>
             <ul class="footer-links">
@@ -29,7 +31,7 @@
             </ul>
         </div>
         <hr class="footer-divider" />
-        <span class="footer-rights">© 2025 <a class="footer-rights-link">2020 studio</a>. All Rights Reserved.</span>
+        <span class="footer-rights">© {year}. All Rights Reserved.</span>
     </div>
 </footer>
 
