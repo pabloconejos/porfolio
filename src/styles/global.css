@@ -1,1 +1,20 @@
 @import "tailwindcss";
+@import "@fontsource/anton/400.css";
+
+:root {
+    --font-portfolio: "Anton", sans-serif;
+    font-family: var(--font-portfolio);
+}
+
+body,
+body * {
+    font-family: var(--font-portfolio);
+    font-weight: 700 !important;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: var(--font-portfolio);
+}

@@ -1,0 +1,167 @@
+<div data-memoji>
+    <video autoplay muted loop playsinline src="/emojiMovie.MOV"></video>
+</div>
+
+<style>
+    div {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        z-index: 1000;
+        margin: 1rem;
+        width: 70px;
+        height: 70px;
+        overflow: hidden;
+        isolation: isolate;
+        background: rgba(235, 248, 255, 0.04);
+        border-radius: 18px;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.82),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.18),
+            inset 0 0 0 1px rgba(15, 23, 42, 0.05),
+            0 10px 28px rgba(15, 23, 42, 0.1);
+        backdrop-filter: blur(22px) saturate(180%);
+        -webkit-backdrop-filter: blur(22px) saturate(180%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: grab;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: none;
+        transition:
+            left 220ms cubic-bezier(0.22, 1, 0.36, 1),
+            top 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    div.is-dragging {
+        cursor: grabbing;
+        transition: none;
+    }
+
+    div::before {
+        content: "";
+        position: absolute;
+        inset: 1px 1px 50%;
+        z-index: -1;
+        border-radius: 16px 16px 50% 50%;
+        background: rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+    }
+
+    video {
+        width: 88%;
+        height: 88%;
+        margin-top: 7px;
+        object-fit: contain;
+        pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+        div {
+            width: 60px;
+            height: 60px;
+            margin: 0.75rem;
+            border-radius: 16px;
+        }
+
+        div::before {
+            border-radius: 14px 14px 50% 50%;
+        }
+    }
+</style>
+
+<script>
+    const memoji = document.querySelector<HTMLElement>("[data-memoji]");
+
+    if (memoji) {
+        const edgeGap = 12;
+        const magnetRange = 64;
+        let dragState:
+            | { pointerId: number; offsetX: number; offsetY: number }
+            | undefined;
+
+        const getBounds = () => ({
+            maxX: Math.max(edgeGap, window.innerWidth - memoji.offsetWidth - edgeGap),
+            maxY: Math.max(edgeGap, window.innerHeight - memoji.offsetHeight - edgeGap),
+        });
+
+        const clamp = (value: number, min: number, max: number) =>
+            Math.min(Math.max(value, min), max);
+
+        const place = (x: number, y: number, forceSnap = false) => {
+            const { maxX, maxY } = getBounds();
+            let nextX = clamp(x, edgeGap, maxX);
+            let nextY = clamp(y, edgeGap, maxY);
+
+            const distances = {
+                left: nextX - edgeGap,
+                right: maxX - nextX,
+                top: nextY - edgeGap,
+                bottom: maxY - nextY,
+            };
+
+            if (forceSnap) {
+                const nearestWall = Object.entries(distances).sort(
+                    ([, firstDistance], [, secondDistance]) => firstDistance - secondDistance,
+                )[0][0];
+
+                if (nearestWall === "left") nextX = edgeGap;
+                if (nearestWall === "right") nextX = maxX;
+                if (nearestWall === "top") nextY = edgeGap;
+                if (nearestWall === "bottom") nextY = maxY;
+            } else {
+                if (distances.left < magnetRange) nextX = edgeGap;
+                if (distances.right < magnetRange) nextX = maxX;
+                if (distances.top < magnetRange) nextY = edgeGap;
+                if (distances.bottom < magnetRange) nextY = maxY;
+            }
+
+            memoji.style.left = `${nextX}px`;
+            memoji.style.top = `${nextY}px`;
+            memoji.style.right = "auto";
+            memoji.style.bottom = "auto";
+            memoji.style.margin = "0";
+        };
+
+        const initialisePosition = () => {
+            const rect = memoji.getBoundingClientRect();
+            place(rect.left, rect.top);
+        };
+
+        const handlePointerDown = (event: PointerEvent) => {
+            const rect = memoji.getBoundingClientRect();
+            dragState = {
+                pointerId: event.pointerId,
+                offsetX: event.clientX - rect.left,
+                offsetY: event.clientY - rect.top,
+            };
+
+            memoji.setPointerCapture(event.pointerId);
+            memoji.classList.add("is-dragging");
+        };
+
+        const handlePointerMove = (event: PointerEvent) => {
+            if (!dragState || event.pointerId !== dragState.pointerId) return;
+
+            place(event.clientX - dragState.offsetX, event.clientY - dragState.offsetY);
+        };
+
+        const finishDragging = (event: PointerEvent) => {
+            if (!dragState || event.pointerId !== dragState.pointerId) return;
+
+            const rect = memoji.getBoundingClientRect();
+            place(rect.left, rect.top, true);
+            memoji.classList.remove("is-dragging");
+            memoji.releasePointerCapture(event.pointerId);
+            dragState = undefined;
+        };
+
+        memoji.addEventListener("pointerdown", handlePointerDown);
+        memoji.addEventListener("pointermove", handlePointerMove);
+        memoji.addEventListener("pointerup", finishDragging);
+        memoji.addEventListener("pointercancel", finishDragging);
+        window.addEventListener("resize", initialisePosition);
+        requestAnimationFrame(initialisePosition);
+    }
+</script>
