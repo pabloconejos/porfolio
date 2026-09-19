@@ -1,17 +1,44 @@
 ---
 import "../styles/global.css";
+
+const {
+	title = "Pablo Conejos | Software Developer",
+	description = "Portfolio de Pablo Conejos, software developer especializado en aplicaciones web y mobile, con foco en experiencias digitales modernas y escalables.",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const socialImage = new URL("/logo_pablo_sin_fondo.png", canonicalURL.origin);
 ---
 
 
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<meta name="author" content="Pablo Conejos" />
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#ffffff" />
+		<link rel="canonical" href={canonicalURL} />
+		<link rel="icon" type="image/png" href="/logo_pablo_sin_fondo.png" />
+		<link rel="apple-touch-icon" href="/logo_pablo_sin_fondo.png" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Pablo Conejos" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={socialImage} />
+		<meta property="og:image:alt" content="Logo de Pablo Conejos" />
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImage} />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
